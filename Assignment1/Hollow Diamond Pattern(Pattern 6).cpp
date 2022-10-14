@@ -1,0 +1,69 @@
+// Take N (number of rows), print the following pattern (for N = 5).
+
+//      * * * * *
+//      * *   * *
+//      *       *
+//      * *   * *
+//      * * * * *
+// Input Format
+// Constraints
+// 0 < N < 10 (where N is an odd number)
+
+// Output Format
+// Sample Input
+// 5
+// Sample Output
+// *	*	*       *      *		  
+// *	*	        *      *
+// * 	                       *
+// * 	*               *      *
+// * 	*	*       *      *	
+// Explanation
+// Each '*' is separated from other by a tab.
+
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+
+	int n;cin>>n;
+	int h = n;
+	int l =1;
+	vector<string>v;
+	for(int i = 0;i<(n+1)/2;++i)
+	{
+		string s="";
+		for(int j =0;j<h-1;++j)
+		cout<<"  ",s+="  ";
+		string k ="";
+		for(int j=i+1;j>0;--j)
+		{
+			cout<<j<<" ";
+			s = s+to_string(j)+" ";
+			k = to_string(j)+" "+k;
+		}
+		if(i==0)
+		{
+            cout<<"\n";
+            h-=2;
+			v.push_back(s);
+            continue;
+        }
+		for(int j= 0;j<l;++j)
+		cout<<"  ",s+="  ";
+		s+=k;
+		cout<<k<<"\n";
+		v.push_back(s);
+		h-=2;
+		l+=2;
+
+	}
+	for(int i = v.size()-2;i>=0;--i)
+	cout<<v[i]<<"\n";
+
+	return 0;
+}
